@@ -4,6 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Company {
@@ -37,7 +38,7 @@ model Client {
   phone     String?
   group     String?
   companyId String
-  company   Company             @relation(fields: [companyId], references: [id])
+  company   Company @relation(fields: [companyId], references: [id])
   documents Document[]
   recurring RecurringDocument[]
 }
